@@ -1,5 +1,8 @@
 pub mod config;
 
+#[cfg(test)]
+mod test;
+
 pub type FieldID = u16;
 
 pub enum ConnectionType {

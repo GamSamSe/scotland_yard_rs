@@ -6,8 +6,6 @@ use crate::FieldID;
 #[derive(Serialize, Deserialize)]
 pub struct GameConfig {
     // General
-        /// Maximum turns of a game until Mister X has won
-        pub max_turns : u16,
         /// Turns at which Mister X will be revealed
         pub reveal_turns : Vec<u16>,
     // 
@@ -37,10 +35,7 @@ pub struct GameConfig {
 impl GameConfig {
     /// Create a new game with the classic rule set
     pub fn create_classic() -> Self {
-        // TODO: Create valid start positions
-
         Self {
-            max_turns: 24,
             reveal_turns: vec![ 3, 8, 13, 18, 24 ],
 
             mx_start_pos_list: vec![ 13, 26, 29, 34, 50, 53, 91, 94, 103, 112, 117, 132, 138, 141, 155, 174, 197, 198 ],
@@ -52,5 +47,9 @@ impl GameConfig {
             det_bus_tickets: 7,
             det_metro_tickets: 4,
         }
+    }
+
+    pub fn max_turns(&self) -> u16 {
+        self.det_taxi_tickets + self.det_bus_tickets + self.det_metro_tickets + self.mx_double_turns
     }
 }

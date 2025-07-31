@@ -5,8 +5,10 @@ pub struct Field {
     pub id : FieldID,
 
     pub taxi_conn : Vec<FieldID>,
+
     pub bus_conn : Option<Vec<FieldID>>,
-    pub metro_conn : Option<Vec<FieldID>>
+    pub metro_conn : Option<Vec<FieldID>>,
+    pub ferry_conn : Option<Vec<FieldID>>
 }
 
 impl Field {
